@@ -85,7 +85,7 @@ void TwoSum (vector<unsigned int>& V) {
 	vector<unsigned int>::iterator y;
 	unsigned int count = 0;
 
-	for (int i = LOWER; i <= HIGHER; ++i) {
+	for (unsigned int i = LOWER; i <= HIGHER; ++i) {
 		x = V.begin();
 		y = V.end()-1;
 
