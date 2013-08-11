@@ -40,7 +40,7 @@ using namespace std;
  * The ith entry in the file will be stored in index i-1.
  */
 
-int ReadFile(vector<long>& V) {
+int ReadFile(vector<unsigned int>& V) {
 	const char* inputfile = "./HashInt.txt";
 	std::string line;
 	std::ifstream infile;
@@ -54,7 +54,7 @@ int ReadFile(vector<long>& V) {
 
 	while (getline(infile, line)) {
 		istringstream iss(line);
-		long a;
+		unsigned int a;
 		iss >> a;
 		V.push_back(a);
 	}
@@ -67,7 +67,7 @@ int ReadFile(vector<long>& V) {
  *
  * Postcondition: Each integer in V will be printed to stdout.
  */
-void PrintNum(const vector<long>& V) {
+void PrintNum(const vector<unsigned int>& V) {
 	for (auto it = V.begin(); it != V.end(); ++it) {
     	cout << *it << endl;
 	}
@@ -80,17 +80,17 @@ void PrintNum(const vector<long>& V) {
  * [2500,4000] will be displayed in stdout such that there
  * are distinct numbers x,y in the input file that satisfy x+y=t.
  */
-void TwoSum (vector<long>& V) {
-	vector<long>::iterator x;
-	vector<long>::iterator y;
-	unsigned long count = 0;
+void TwoSum (vector<unsigned int>& V) {
+	vector<unsigned int>::iterator x;
+	vector<unsigned int>::iterator y;
+	unsigned int count = 0;
 
 	for (int i = LOWER; i <= HIGHER; ++i) {
 		x = V.begin();
 		y = V.end()-1;
 
 		while (x != y) {
-			long sum = *x + *y;
+			unsigned int sum = *x + *y;
 
 			if (sum == i) {
 				count++;
@@ -111,13 +111,13 @@ void TwoSum (vector<long>& V) {
 int main () {
 
 	// Read integers and store in vector
-	vector<long>V;
+	vector<unsigned int>V;
 	if (ReadFile(V) < 0) return -1;
 
 	// Erase duplicate numbers and sort vector
-	set<long> s;
-	unsigned long size = V.size();
-	for( unsigned long i = 0; i < size; ++i ) s.insert( V[i] );
+	set<unsigned int> s;
+	unsigned int size = V.size();
+	for( unsigned int i = 0; i < size; ++i ) s.insert( V[i] );
 	V.assign(s.begin(),s.end() );
 	sort(V.begin(), V.end());
 
